@@ -1,0 +1,23 @@
+<%= render partial: 'layouts/navbar'%>
+<%= stylesheet_link_tag 'contact' %>
+<div class="container">
+  <div style="text-align:center">
+    <h1><b>Contact Us</b></h1>
+    <p>Leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <%= image_tag "logo.jpg", style: "width:100%" %>
+    </div>
+    <div class="column">
+      <%= form_for @contact, url: {action: :create} do |f| %>
+        <%= f.text_field :name, placeholder: 'Your name..', required: true %>
+        <%= f.text_field :email, placeholder: 'Your email..', required: true %>
+        <%= f.text_field :phone, placeholder: 'Your phone..', required: true %>
+        <%= f.text_field :subject, placeholder: 'Subject/Questions', required: true %>
+        <%= f.text_area :description, placeholder: 'Write something..', style: "height:170px", required: true %>
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  </div>
+</div> 

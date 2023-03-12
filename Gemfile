@@ -30,6 +30,14 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'net-smtp'
 
+gem 'sendgrid-ruby'
+
+gem 'sendgrid-actionmailer'
+
+gem 'pry', '~> 0.13.1'
+
+gem 'dotenv-rails'
+
 gem 'devise'
 
 group :development, :test do

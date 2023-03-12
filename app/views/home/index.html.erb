@@ -1,1 +1,68 @@
-<h1>FamEve</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FamEve</title>
+  </head>
+  <body>
+   <%= render partial: 'layouts/navbar'%>
+    <!-- Carousel wrapper -->
+    <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <!-- Inner -->
+      <div class="carousel-inner shadow-4-strong">
+        <!-- Single item -->
+        <div class="carousel-item active">
+          <%= image_tag "1.jpg", class: "d-block w-100" %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Join Us</h5>
+            <%= link_to "Become Seller", new_user_registration_path, :class => 'btn btn-light my-2 my-sm-0'  %>
+            <%= link_to "Login", new_user_session_path, :class => 'btn btn-outline-light my-2 my-sm-0'  %>
+          </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+          <%= image_tag "2.jpg", class: "d-block w-100" %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Join Us</h5>
+            <%= link_to "Become Seller", new_user_registration_path, :class => 'btn btn-light my-2 my-sm-0'  %>
+            <%= link_to "Login", new_user_session_path, :class => 'btn btn-outline-light my-2 my-sm-0'  %>
+          </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+          <%= image_tag "3.jpg", class: "d-block w-100" %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Join Us</h5>
+            <%= link_to "Become Seller", new_user_registration_path, :class => 'btn btn-light my-2 my-sm-0'  %>
+            <%= link_to "Login", new_user_session_path, :class => 'btn btn-outline-light my-2 my-sm-0'  %>
+          </div>
+        </div>
+      </div>
+      <!-- Inner -->
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- Carousel wrapper -->
+    <%= render partial: 'layouts/footer'%>
+  </body>
+</html>

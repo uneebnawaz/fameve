@@ -1,0 +1,79 @@
+<%= stylesheet_link_tag 'register' %>
+<%= javascript_pack_tag 'register' %>
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+  <div class="row justify-content-center mt-0">
+    <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+        <h2><strong>Sign Up</strong></h2>
+        <p>Fill all form field to join FamEve</p>
+          <div class="row">
+            <div class="col-md-12 mx-0">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "msform"}) do |f| %>
+                <!-- progressbar -->
+                <ul id="progressbar">
+                  <li class="active" id="account"><strong>Account</strong></li>
+                  <li id="personal"><strong>Personal</strong></li>
+                  <li id="payment"><strong>Profession</strong></li>
+                  <li id="confirm"><strong>Finish</strong></li>
+                </ul>
+                <!-- fieldsets -->
+                <fieldset>
+                  <div class="form-card">
+                    <h2 class="fs-title">Account Information</h2>
+                    <%= f.text_field :username, placeholder: "UserName" %>
+                    <%= f.email_field :email, placeholder: "Email" %>
+                    <%= f.password_field :password, placeholder: "Password" %>
+                    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+                  </div>
+                  <input type="button" name="next" class="next action-button" value="Next Step"/>
+                </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Personal Information</h2>
+                      <%= f.text_field :fname, placeholder: "First Name" %>
+                      <%= f.text_field :lname, placeholder: "Last Name" %>
+                      <%= f.text_field :phone, placeholder: "phone" %>
+                      <%= f.text_field :address, placeholder: "Address" %>
+                      <%= f.file_field :image, placeholder: 'Upload picture', direct_upload: true %>
+                    </div>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next Step"/>
+                  </fieldset>
+                    <fieldset>
+                      <div class="form-card">
+                        <h2 class="fs-title">Professional Information</h2>
+                        <!-- <#%= f.select :role, collection: User.roles.keys.to_a %> -->
+                        <%= f.text_field :skill, placeholder: "Skill" %>
+                        <%= f.text_field :experience, placeholder: "Experience" %>
+                        <%= f.text_field :education, placeholder: "Education" %>
+                        <%= f.text_field :certification, placeholder: "Certification" %>
+                      </div>
+                      <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                      <%= f.submit "Confirm", class: "next action-button"%>
+                    </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title text-center">Success !</h2>
+                      <br><br>
+                      <div class="row justify-content-center">
+                        <div class="col-3">
+                          <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image">
+                        </div>
+                      </div>
+                      <br><br>
+                      <div class="row justify-content-center">
+                        <div class="col-7 text-center">
+                          <h5>You Have Successfully Signed Up</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: 'layouts/footer'%>
