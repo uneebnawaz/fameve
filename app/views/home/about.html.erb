@@ -1,10 +1,9 @@
 <%= render partial: 'layouts/navbar'%>
 <%= stylesheet_link_tag 'contact' %>
+<div class="about-section">
+  <h1>About Us</h1>
+</div>
 <div class="container">
-  <div style="text-align:center">
-    <h1><b>About Us</b></h1>
-    <p>FamEve</p>
-  </div>
   <div class="row">
     <div class="column">
       <%= image_tag "logo.jpg", style: "width:100%" %>
@@ -15,4 +14,5 @@
     </div>
   </div>
 </div> 
+<%= render partial: 'layouts/footer'%>
 

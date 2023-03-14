@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/home", to: "home#index"
   get "/team", to: "home#team"
   get "/about", to: "home#about"
+  get "/guide", to: "home#guide"
   resources :contact_us
   namespace :admin do
     get "/dashboard", to: "dashboard#index"

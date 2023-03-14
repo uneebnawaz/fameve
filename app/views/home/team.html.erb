@@ -15,34 +15,36 @@
         <p class="title">Developer</p>
         <p>Hi! I am Uneeb. I am full stack ROR developer.</p>
         <p>f190237@nu.edu.pk</p>
-        <p><button class="button">Contact</button></p>
+        <p><%= link_to 'Contact', new_contact_u_path , class: "button" %></p>
       </div>
     </div>
   </div>
 
   <div class="column">
     <div class="card">
-      <%= image_tag "irtaza.jpeg", style: "width:100%" %>
+      <%= image_tag "irtaza.jpg", style: "width:100%" %>
       <div class="container">
         <h2>Irtaza Zafar</h2>
         <p class="title">Developer</p>
         <p>Hi! I am Irtaza. I am full stack ROR developer.</p>
-          <p>f190242@nu.edu.pk</p>
-        <p><button class="button">Contact</button></p>
+        <p>f190242@nu.edu.pk</p>
+        <p><%= link_to 'Contact', new_contact_u_path , class: "button" %></p>
       </div>
     </div>
   </div>
 
   <div class="column">
     <div class="card">
-      <%= image_tag "zeeshal.jpeg", style: "width:100%" %>
+      <%= image_tag "zeeshal.jpg", style: "width:100%" %>
       <div class="container">
         <h2>Zeeshal Butt</h2>
         <p class="title">Developer</p>
         <p>Hi! I am zeeshal. I am full stack ROR developer.</p>
         <p>f190264@nu.edu.pk</p>
-        <p><button class="button">Contact</button></p>
+        <p><%= link_to 'Contact', new_contact_u_path , class: "button" %></p>
       </div>
     </div>
   </div>
 </div> 
+
+<%= render partial: 'layouts/footer'%>

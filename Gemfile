@@ -32,6 +32,8 @@ gem 'net-smtp'
 
 gem 'grape'
 
+gem "font-awesome-sass", "~> 6.3.0"
+
 gem 'rack-cors'
 
 gem 'grape-active_model_serializers'

@@ -30,21 +30,7 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Brand -->
-      <a class="navbar-brand" href="#">
-        <%= image_tag "logo2.png", height: "25" %>
-      </a>
-      <!-- Search form -->
-      <form class="d-none d-md-flex input-group w-auto my-auto">
-        <input
-          autocomplete="off"
-          type="search"
-          class="form-control rounded"
-          placeholder='Search'
-          style="min-width: 225px;"
-        />
-        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-      </form>
+     <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
 
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -116,7 +102,7 @@
 <main style="margin-top: 58px;">
     <div class="container pt-4">
         <h2>Seller Services</h2>
-          <%= link_to "New Service", new_seller_service_path, class: "btn btn-primary" %><br>
+          <%= link_to "New Service", new_seller_service_path, class: "btn btn-primary btn-sm" %><br><br>
       <% if @services.any? %>
         <div>
           <table class="table">
@@ -139,9 +125,9 @@
                 <td class=""><%= service.price %></td>
                 <td><%= link_to "Portfolio", "http://#{service.portfolio}", :target => "_blank", rel: "alternate" %></td>
                 <td>
-                  <%= link_to 'Remove', seller_service_path(service), method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <%= link_to 'Edit', edit_seller_service_path(service) %>
-                  <%= link_to 'Show', seller_service_path(service) %>
+                  <%= link_to ('<i class="fa-solid fa-trash" style="color:gray"></i>').html_safe,  seller_service_path(service), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, seller_service_path(service) %>
+                  <%= link_to ('<i class="fa-solid fa-pen-to-square" style="color:gray"></i>').html_safe, edit_seller_service_path(service) %>
                 </td>
               </tr>
             </tbody>
