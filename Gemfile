@@ -30,6 +30,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'net-smtp'
 
+gem 'grape'
+
+gem 'rack-cors'
+
+gem 'grape-active_model_serializers'
+
 gem 'sendgrid-ruby'
 
 gem 'sendgrid-actionmailer'
