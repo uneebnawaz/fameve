@@ -117,16 +117,19 @@
   <div class="container pt-4">
     <h2>New Service</h2>
     <%= form_for @service, url: {action: :create} do |f| %>
-    <div class="col-5">
+    <div class="col-3">
       <%= f.text_field :tittle, placeholder: 'tittle', class: "form-control", required: true %>
     </div>
     <div class="col-5">
-      <%= f.text_field :description, placeholder: 'description', class: "form-control", required: true %>
+      <%= f.text_area :description, placeholder: 'description', class: "form-control", required: true %>
+    </div>
+    <div class="col-2">
+      <%= f.select :category, ['Photography', 'Shef', 'Music/Dj', 'Hotel' 'Decore'], class: "form-control", required: true%>
     </div>
     <div class="col-2">
       <%= f.text_field :price, placeholder: 'price', class: "form-control", required: true %>
     </div>
-    <div class="col-3">
+    <div class="col-2">
       <%= f.text_field :portfolio, placeholder: 'portfolio', class: "form-control", required: true %>
     </div>
     <div class="col-3">

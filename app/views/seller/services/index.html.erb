@@ -124,6 +124,7 @@
               <tr>
                 <th><%= "Tittle" %></th>
                 <th><%= "Description" %></th>
+                <th><%= "Category" %></th>
                 <th><%= "Price" %></th>
                 <th><%= "Portfolio" %></th>
                 <th><%= "Operation" %></th>
@@ -134,6 +135,7 @@
               <tr>
                 <td class=""><%= service.tittle %></td>
                 <td class=""><%= service.description %></td>
+                <td class=""><%= service.category %></td>
                 <td class=""><%= service.price %></td>
                 <td><%= link_to "Portfolio", "http://#{service.portfolio}", :target => "_blank", rel: "alternate" %></td>
                 <td>
