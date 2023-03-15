@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'net-smtp'
 
+gem 'email_validator'
+
 gem 'grape'
 
 gem "font-awesome-sass", "~> 6.3.0"

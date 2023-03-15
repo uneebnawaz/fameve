@@ -112,6 +112,8 @@ GEM
       dry-inflector (~> 1.0)
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.11.0)
     ffi (1.15.5)
     font-awesome-sass (6.3.0)
@@ -287,6 +289,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
+  email_validator
   font-awesome-sass (~> 6.3.0)
   grape
   grape-active_model_serializers
