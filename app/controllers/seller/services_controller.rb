@@ -47,6 +47,11 @@ class Seller::ServicesController < ApplicationController
 		@service = Service.find(params[:id])
 	end
 
+	def view_sales
+		@user = User.find(current_user.id)
+		@services = current_user.services
+	end
+
 	private
 
 	def service_params

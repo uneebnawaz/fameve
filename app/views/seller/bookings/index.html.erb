@@ -8,6 +8,8 @@
         <%= link_to "Main Dashboard", seller_dashboard_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
         <%= link_to "Services", seller_services_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
         <%= link_to "Bookings", seller_bookings_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
+        <%= link_to "Manage Requests", seller_post_requests_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
+        <%= link_to "View Sales", seller_sales_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
       </div>
     </div>
   </nav>
@@ -127,6 +129,8 @@
                 <td class=""><%= booking.status %></td>
                 <td>
                   <%= link_to ('<i class="fa-solid fa-trash" style="color:gray"></i>').html_safe, seller_booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, seller_booking_path(booking) %>
+                  <%= link_to ('<i class="fa-solid fa-pen-to-square" style="color:gray"></i>').html_safe, edit_seller_booking_path(booking) %>
                 </td>
               </tr>
             </tbody>

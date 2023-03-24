@@ -32,7 +32,7 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
+     <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
 
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -102,8 +102,34 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <div class="container pt-4">
-        <h2>Seller Dashboard!</h2>
+  <div class="container pt-4">
+    <h2>Show Service</h2><br>
+     <div class="container">
+      <div class="row align-items-center">
+        <div class="col-4">
+          <% @user=User.find(@booking.user_id) %>
+          <h5><b>User Name:&nbsp;&nbsp;</b><%= @user.fname %><h5>
+          <% @service=Service.find(@booking.service_id) %>
+          <h5><b>Service Name:&nbsp;&nbsp;</b><%= @service.tittle %><h5>
+          <h5><b>Event Date:&nbsp;&nbsp;</b><%= @booking.event_date %><h5>
+          <h5><b>City:&nbsp;&nbsp;</b><%= @booking.city %><h5>
+          <h5><b>Address:&nbsp;&nbsp;</b><%= @booking.address %><h5>
+          <h5><b>Phone:&nbsp;&nbsp;</b><%= @booking.phone %><h5>
+          <h5><b>Description:&nbsp;&nbsp;</b><%= @booking.description %><h5>                  
+        </div>
+      </div>
     </div>
+  </div>
 </main>
 <!--Main layout-->
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>

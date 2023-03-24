@@ -103,7 +103,43 @@
 <!--Main layout-->
 <main style="margin-top: 58px;">
     <div class="container pt-4">
-        <h2>Seller Dashboard!</h2>
+      <h2>Manage Requests</h2>
+      <% if @requests.any? %>
+        <div>
+          <table class="table">
+            <thead class = "text-dark">
+              <tr>
+                <th><%= "Tittle" %></th>
+                <th><%= "Description" %></th>
+                <th><%= "Event Date" %></th>
+                <th><%= "Email" %></th>
+                <th><%= "City" %></th>
+                <th><%= "Address" %></th>
+                <th><%= "Phone" %></th>
+                <th><%= "Operation" %></th>
+              </tr>
+            </thead>
+            <% @requests.each do |request|%>
+            <tbody>
+              <tr>
+                <td class=""><%= request.tittle %></td>
+                <td class=""><%= request.description %></td>
+                <td class=""><%= request.event_date %></td>
+                <td class=""><%= request.email %></td>
+                <td class=""><%= request.city %></td>
+                <td class=""><%= request.address %></td>
+                <td class=""><%= request.phone %></td>   
+                <td>
+                  <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, seller_post_request_path(request) %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+        </div>
+      <% else %>
+        <br><h5><%= "No Requests" %></h5>
+      <% end %>
     </div>
 </main>
 <!--Main layout-->

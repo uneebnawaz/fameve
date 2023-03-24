@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_15_045148) do
+ActiveRecord::Schema.define(version: 2023_03_24_121535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,20 @@ ActiveRecord::Schema.define(version: 2023_03_15_045148) do
     t.text "reply"
   end
 
+  create_table "post_requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "event_date"
+    t.string "city"
+    t.string "address"
+    t.string "phone"
+    t.string "tittle"
+    t.text "description"
+    t.text "reply"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "tittle"
     t.text "description"
@@ -101,6 +115,8 @@ ActiveRecord::Schema.define(version: 2023_03_15_045148) do
     t.string "education"
     t.string "certification"
     t.boolean "status", default: false
+    t.string "authentication_token"
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

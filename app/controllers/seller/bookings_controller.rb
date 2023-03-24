@@ -30,7 +30,7 @@ class Seller::BookingsController < ApplicationController
 		@user = User.find(current_user.id)
  		@booking = Booking.find(params[:id])
 	    @booking.update(booking_params)
-	    redirect_to booking_path(@booking)
+	    redirect_to seller_bookings_path
 	end
 
 	def show

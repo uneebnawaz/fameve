@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount API::Base, at: "/"
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -21,8 +22,11 @@ Rails.application.routes.draw do
     get "/dashboard", to: "dashboard#index"
     get "/profile", to: "profile#index" 
     get "/profile/:id/edit", to: "profile#edit" 
+    patch "/request_reply", to: "post_requests#request_reply"
+    get "/sales", to: "services#view_sales"
     resources :services 
     resources :bookings
+    resources :post_requests
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

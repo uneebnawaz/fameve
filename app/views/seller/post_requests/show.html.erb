@@ -32,7 +32,7 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
+     <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
 
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -102,8 +102,29 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <div class="container pt-4">
-        <h2>Seller Dashboard!</h2>
+  <div class="container pt-4">
+    <h2>Respond to Request</h2><br>
+     <div class="container">
+      <div class="row align-items-center">
+        <div class="col-4">
+          <h5><b>Tittle:&nbsp;&nbsp;</b><%= @request.tittle %><h5>
+          <h5><b>Description:&nbsp;&nbsp;</b><%= @request.description %><h5>
+          <h5><b>Event Date:&nbsp;&nbsp;</b><%= @request.event_date %><h5>
+          <h5><b>City:&nbsp;&nbsp;</b><%= @request.city %><h5>
+          <h5><b>Email:&nbsp;&nbsp;</b><%= @request.email %><h5>
+          <h5><b>Address:&nbsp;&nbsp;</b><%= @request.address %><h5>
+          <h5><b>Phone:&nbsp;&nbsp;</b><%= @request.phone %><h5>                  
+        </div>
+        <div class="col-4">
+          <%= form_for @request, url: seller_request_reply_path do |f| %>
+            <%= f.text_field :email, placeholder: 'Your email..' %>
+            <%= f.text_area :reply, placeholder: 'Reply to user..', style: "height:150px" %>
+            <%= f.submit "Submit", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
     </div>
+  </div>
 </main>
 <!--Main layout-->
+

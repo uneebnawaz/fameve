@@ -32,6 +32,8 @@ gem 'net-smtp'
 
 gem 'email_validator'
 
+gem 'simple_token_authentication'
+
 gem 'grape'
 
 gem "font-awesome-sass", "~> 6.3.0"
@@ -49,6 +51,11 @@ gem 'pry', '~> 0.13.1'
 gem 'dotenv-rails'
 
 gem 'devise'
+
+gem 'devise_token_auth'
+
+gem 'omniauth'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
