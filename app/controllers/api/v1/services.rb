@@ -6,7 +6,7 @@ module API
       resource :services do
         desc "Return all services"
         get "" do
-          Service.all.joins(:image_attachment)
+          Service.all
         end
 
       desc "Return a user" 

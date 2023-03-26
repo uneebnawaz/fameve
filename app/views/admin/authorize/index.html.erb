@@ -40,11 +40,11 @@
           <table class="table">
             <thead class = "text-dark">
               <tr>
-                <th><%= "username" %></th>
                 <th><%= "fname" %></th>
                 <th><%= "lname" %></th>
                 <th><%= "email" %></th>
                 <th><%= "phone" %></th>
+                <th><%= "city" %></th>
                 <th><%= "address" %></th>
                 <th><%= "status" %></th>
                 <th><%= "change status" %></th>
@@ -53,11 +53,11 @@
             <% @users.each do |user|%>
             <tbody>
               <tr>
-                <td class=""><%= user.username %></td>
                 <td class=""><%= user.fname %></td>
                 <td class=""><%= user.lname %></td>
                 <td class=""><%= user.email %></td>
                 <td class=""><%= user.phone %></td>
+                <td class=""><%= user.city %></td>
                 <td class=""><%= user.address %></td>
                 <td class=""><%= user.status %></td>
                 <td>

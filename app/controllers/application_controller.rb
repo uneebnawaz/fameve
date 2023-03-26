@@ -15,8 +15,8 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :fname, :lname, :address, :phone, :skill, :experience, :education, :role, :certification, :image])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :fname, :lname, :address, :phone, :skill, :experience, :education, :role, :certification, :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:city, :fname, :lname, :address, :phone, :skill, :experience, :education, :role, :certification, :image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:city, :fname, :lname, :address, :phone, :skill, :experience, :education, :role, :certification, :image])
   end
 
 end

@@ -21,10 +21,10 @@
                 <fieldset>
                   <div class="form-card">
                     <h2 class="fs-title">Account Information</h2>
-                    <%= f.text_field :username, placeholder: "UserName" %>
                     <%= f.email_field :email, placeholder: "Email" %>
                     <%= f.password_field :password, placeholder: "Password" %>
                     <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+                    <%= f.text_field :city, placeholder: "City" %>
                   </div>
                   <input type="button" name="next" class="next action-button" value="Next Step"/>
                 </fieldset>
