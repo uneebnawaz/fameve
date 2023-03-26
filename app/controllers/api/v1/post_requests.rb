@@ -13,8 +13,9 @@ module API
           phone = params[:phone]
           event_date = params[:event_date]
           user_id = params[:user_id]
-          booking = PostRequest.new(city: city, address: address, phone: phone, description: description, event_date: event_date, user_id: user_id, email: email, tittle: tittle)
-          booking.save
+          budget = params[:budget]
+          request = PostRequest.new(city: city, address: address, phone: phone, description: description, event_date: event_date, user_id: user_id, email: email, tittle: tittle, budget: budget)
+          request.save
         end
       end
     end

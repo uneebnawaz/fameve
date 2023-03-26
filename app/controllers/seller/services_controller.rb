@@ -49,7 +49,6 @@ class Seller::ServicesController < ApplicationController
 
 	def view_sales
 		@user = User.find(current_user.id)
-		@services = current_user.services
 	end
 
 	private

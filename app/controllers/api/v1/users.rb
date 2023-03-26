@@ -18,6 +18,50 @@ module API
             error!('Invalid email or password', 401)
           end
         end
+        post 'sign_up' do
+          email = params[:email]
+          password = params[:password]
+          password_confirmation = params[:password_confirmation]
+          role = 1
+          username = params[:username]
+          fname = params[:fname]
+          lname = params[:lname]
+          phone = params[:phone]
+          address = params[:address]
+          authentication_token = SecureRandom.hex(32)
+          user = User.new(email: email, password: password, password_confirmation: password_confirmation, role: role, username: username, fname: fname, lname: lname, phone: phone, address: address, authentication_token: authentication_token)
+          user.save
+        end
+        patch do
+          user = User.where(authentication_token: params[:authentication_token])
+          if user.present?
+            user.update(authentication_token: nil)
+          else
+            error!('Invalid user', 401)
+          end
+        end
+        patch 'edit_profile' do
+          username = params[:username]
+          fname = params[:fname]
+          lname = params[:lname]
+          phone = params[:phone]
+          address = params[:address]
+          user = User.where(authentication_token: params[:authentication_token])
+          if user.present?
+            user.update(username: username, fname: fname, lname: lname, phone: phone, address: address)
+          else
+            error!('Invalid user', 401)
+          end
+        end
+        get 'show/:authentication_token' do
+          user = User.where(authentication_token: params[:authentication_token])
+          if user.present?
+            user
+          else
+            error!('Invalid user', 401)
+          end
+        end
+
       end
     end
   end

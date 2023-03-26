@@ -25,6 +25,6 @@ class Seller::PostRequestsController < ApplicationController
 	private
 
 	def request_params
-		params.require(:post_request).permit(:tittle, :description, :event_date, :city, :email, :address, :phone, :user_id, :reply)
+		params.require(:post_request).permit(:tittle, :description, :event_date, :city, :email, :address, :phone, :user_id, :reply, :budget)
 	end
 end

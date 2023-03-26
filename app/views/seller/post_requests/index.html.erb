@@ -116,6 +116,7 @@
                 <th><%= "City" %></th>
                 <th><%= "Address" %></th>
                 <th><%= "Phone" %></th>
+                <th><%= "Budget" %></th>
                 <th><%= "Operation" %></th>
               </tr>
             </thead>
@@ -129,6 +130,7 @@
                 <td class=""><%= request.city %></td>
                 <td class=""><%= request.address %></td>
                 <td class=""><%= request.phone %></td>   
+                <td class=""><%= request.budget %></td>   
                 <td>
                   <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, seller_post_request_path(request) %>
                 </td>
