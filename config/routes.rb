@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     get "authorize/:id/edit", to: "authorize#edit"
     resources :contact_us
   end
+  namespace :advisor do
+    get "/dashboard", to: "dashboard#index"
+  end
   namespace :seller do
     get "/dashboard", to: "dashboard#index"
     get "/profile", to: "profile#index" 

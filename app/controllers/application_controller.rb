@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
     if current_user.status == true && current_user.role == 'admin'
       admin_dashboard_path
-    elsif current_user.status == true
+    elsif current_user.status == true && current_user.role == 'seller'
       seller_dashboard_path
+    elsif current_user.status == true && current_user.role == 'advisor'
+      advisor_dashboard_path
     else
       root_path
     end 

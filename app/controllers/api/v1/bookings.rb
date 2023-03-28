@@ -4,8 +4,8 @@ module API
       include API::V1::Defaults
 
       resource :bookings do
-        get "" do
-          Booking.all
+        get ":user_id" do
+          Booking.where(user_id: params[:user_id])
         end
 
         post do
