@@ -115,6 +115,9 @@
       <%= f.select :category, ['Photography', 'Chef', 'Music/Dj', 'Hotel', 'Decore'], class: "form-control"%>
     </div>
     <div class="col-2">
+      <%= f.select :event_type, ['Wedding', 'Birthday', 'Gathering'], class: "form-control", required: true%>
+    </div>
+    <div class="col-2">
       <%= f.text_field :price, placeholder: 'price', class: "form-control" %>
     </div>
     <div class="col-3">

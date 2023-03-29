@@ -35,9 +35,8 @@ class Seller::ServicesController < ApplicationController
 
 	def destroy
 		@user = User.find(current_user.id)
-
 		@service = Service.find(params[:id])
-    @service.delete
+    	@service.delete
 		redirect_to seller_services_path
 	end
 
@@ -54,6 +53,6 @@ class Seller::ServicesController < ApplicationController
 	private
 
 	def service_params
-		params.require(:service).permit(:tittle, :description, :price, :portfolio, :image, :like, :ratings, :reviews, :user_id, :category)
+		params.require(:service).permit(:tittle, :description, :price, :portfolio, :image, :event_type, :user_id, :category)
 	end
 end

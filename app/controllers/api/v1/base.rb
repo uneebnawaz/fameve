@@ -7,6 +7,7 @@ module API
       mount API::V1::PostRequests
       mount API::V1::Wishlists
       mount API::V1::Packages
+      mount API::V1::Reviews
     end
   end
 end

@@ -6,11 +6,10 @@ module API
       resource :packages do
         desc "Generate package" 
         get "" do
-          category = params[:category]
+          event_type = params[:event_type]
           high = params[:high]
           low = params[:low]
-          services=Service.where(category: category, price: low..high)
-          services
+          Service.where(event_type: event_type, price: low..high)
         end
       end
 
