@@ -108,24 +108,24 @@
     <div class="col-3">
       <%= f.text_field :tittle, placeholder: 'tittle', class: "form-control", required: true %>
     </div>
-    <div class="col-5">
+    <div class="col-3">
       <%= f.text_area :description, placeholder: 'description', class: "form-control", required: true %>
     </div>
-    <div class="col-2">
-      <%= f.select :category, ['Photography', 'Chef', 'Music/Dj', 'Hotel', 'Decore'], class: "form-control", required: true%>
+    <div class="col-3 mt-3">
+      <%= f.select :category, ['Hotels', 'Decoration', 'Photographer', 'Rental Cars', 'Music System', 'Dress Designer', 'Event Manager', 'Chef', 'Others' ], class: "form-control", required: true %>
     </div>
-    <div class="col-2">
-      <%= f.select :event_type, ['Wedding', 'Birthday', 'Gathering'], class: "form-control", required: true%>
+    <div class="col-3 mt-3">
+      <%= f.select :event_type, ['Wedding', 'Birthday', 'Family Gathering'], class: "form-control", required: true%>
     </div>
-    <div class="col-2">
+    <div class="col-3 mt-3">
       <%= f.text_field :price, placeholder: 'price', class: "form-control", required: true %>
     </div>
-    <div class="col-2">
+    <div class="col-3">
       <%= f.text_field :portfolio, placeholder: 'portfolio', class: "form-control", required: true %>
     </div>
     <div class="col-3">
       <%= f.file_field :image, class: "form-control-file", required: true %><br>
-      <%= f.submit %>
+      <%= f.submit "Submit", class: "btn btn-success" %>
     </div>
     <% end %> 
   </div>
