@@ -2,8 +2,8 @@
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
       <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          class="img-fluid" alt="Phone image">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
        <p class="h1 fw-bold">Sign In</p><br>
@@ -29,12 +29,11 @@
                 <label class="form-check-label" for="form1Example3"> Remember me </label>
               <% end %>
             </div>
-            <%= render "devise/shared/links" %>
+            Don't have an account? <%= link_to "Register", new_registration_path(resource_name), class: "link-danger" %>
           </div>
 
           <!-- Submit button -->
           <%= f.submit "Log in", class: "btn btn-primary btn-lg btn-block"%>
-
 
         <% end %>
       </div>

@@ -1,7 +1,7 @@
 class Seller::BookingsController < ApplicationController
 	def index
 		@user = User.find(current_user.id)
-		@bookings = Booking.all
+		@bookings = Booking.joins(:service).where(services: { user_id: current_user.id })
 	end
 
 	def new
