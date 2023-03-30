@@ -4,7 +4,8 @@ class Admin::AuthorizeController < ApplicationController
 	end
 	
 	def edit
-		user = User.unscoped.find(params[:id])
-		user.update(status: !user.status)
+		@user = User.unscoped.find(params[:id])
+		@user.update(status: !@user.status)
+		redirect_to admin_authorize_path
 	end
 end

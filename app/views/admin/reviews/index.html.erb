@@ -8,40 +8,33 @@
 <!--Main layout-->
 <main style="margin-top: 58px;">
     <div class="container pt-4">
-      <h2>Authorize Users</h2>
-      <% if @users.any? %>
+      <h2>Manage Reviews</h2>
+      <% if @reviews.any? %>
         <div id="auto_update">
           <table class="table">
             <thead class = "text-dark">
               <tr>
-                <th><%= "fname" %></th>
-                <th><%= "lname" %></th>
-                <th><%= "email" %></th>
-                <th><%= "phone" %></th>
-                <th><%= "city" %></th>
-                <th><%= "address" %></th>
+                <th><%= "Service Name" %></th>
+                <th><%= "Posted by user" %></th>
+                <th><%= "Review" %></th>
                 <th><%= "status" %></th>
                 <th><%= "change status" %></th>
               </tr>
             </thead>
-            <% @users.each do |user|%>
+            <% @reviews.each do |review|%>
             <tbody>
               <tr>
-                <td class=""><%= user.fname %></td>
-                <td class=""><%= user.lname %></td>
-                <td class=""><%= user.email %></td>
-                <td class=""><%= user.phone %></td>
-                <td class=""><%= user.city %></td>
-                <td class=""><%= user.address %></td>
-                <td class=""><%= user.status %></td>
+                <td class=""><%= review.service.tittle %></td>
+                <td class=""><%= review.user.fname %></td>
+                <td class=""><%= review.description %></td>
+                <td class=""><%= review.status %></td>
                 <td>
-                  <%= check_box_tag 'completed', user.id, user.status,
+                  <%= check_box_tag 'Allow', review.id, review.status,
                   data: {
                     remote: true,
-                    url: admin_path(user),
+                    url: admin_review_path(review),
                     method: "PATCH",
                     type: "json",
-                    target: "#auto_update"
                   } %>
                 </td>
               </tr>

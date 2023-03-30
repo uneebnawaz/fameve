@@ -11,7 +11,7 @@ module API
           review.save
         end
         get "" do
-          Review.all
+          Review.where(status: true)
         end
       end
     end

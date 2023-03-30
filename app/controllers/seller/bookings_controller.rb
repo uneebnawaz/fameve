@@ -1,16 +1,13 @@
 class Seller::BookingsController < ApplicationController
 	def index
-		@user = User.find(current_user.id)
 		@bookings = Booking.joins(:service).where(services: { user_id: current_user.id })
 	end
 
 	def new
-		@user = User.find(current_user.id)
 		@booking = Booking.new
 	end
 
 	def create
-		@user = User.find(current_user.id)
 		@booking = Booking.new(booking_params)
 		@booking.user_id = current_user.id
 		if @booking.valid?
@@ -22,25 +19,20 @@ class Seller::BookingsController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(current_user.id)
 		@booking = Booking.find(params[:id])
 	end
 
 	def update
-		@user = User.find(current_user.id)
  		@booking = Booking.find(params[:id])
 	    @booking.update(booking_params)
 	    redirect_to seller_bookings_path
 	end
 
 	def show
-		@user = User.find(current_user.id)
-		
 		@booking = Booking.find(params[:id])
 	end
 
 	def destroy
-		@user = User.find(current_user.id)
 		@booking = Booking.find(params[:id])
     	@booking.delete
 		redirect_to seller_bookings_path

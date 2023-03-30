@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "dashboard#index"
     get "/authorize", to: "authorize#index"
+    get "/reviews", to: "reviews#index"
     patch "/reply", to: "contact_us#reply"
-    get "authorize/:id/edit", to: "authorize#edit"
+    resources :reviews
     resources :contact_us
   end
   namespace :advisor do

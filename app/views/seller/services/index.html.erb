@@ -1,142 +1,48 @@
 <%= stylesheet_link_tag 'dashboard' %>
+<style type="text/css">
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .card-img-top {
+    height: 200px;
+    width: 100%;
+    object-fit: cover; /* This property will ensure that the image fills the entire space of the container without distorting the aspect ratio */
+  }
+</style>
 <!--Main Navigation-->
 <header>
-  <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <%= link_to "Main Dashboard", seller_dashboard_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Services", seller_services_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Bookings", seller_bookings_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Manage Requests", seller_post_requests_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "View Sales", seller_sales_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-      </div>
-    </div>
-  </nav>
-  <!-- Sidebar -->
-
-  <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-
-     <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
-
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
-        <!-- Notification dropdown -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">Some news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Avatar -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-          <%= image_tag @user.image, class: "rounded-circle", height: "22", loading: "lazy" %>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <%= link_to 'My Profile', seller_profile_path, class: "dropdown-item" %>
-            </li>
-            <li>
-                <%= link_to 'Manage Profile', edit_user_registration_path, class: "dropdown-item" %>
-            </li>
-            <li>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+  <%= render partial: 'layouts/seller_header'%>
 </header>
 <!--Main Navigation-->
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
     <div class="container pt-4">
-        <h2>Seller Services</h2>
-          <%= link_to "New Service", new_seller_service_path, class: "btn btn-primary btn-sm" %><br><br>
       <% if @services.any? %>
-        <div>
-          <table class="table">
-            <thead class = "text-dark">
-              <tr>
-                <th><%= "Tittle" %></th>
-                <th><%= "Description" %></th>
-                <th><%= "Category" %></th>
-                <th><%= "Event Type" %></th>
-                <th><%= "Price" %></th>
-                <th><%= "Portfolio" %></th>
-                <th><%= "Operation" %></th>
-              </tr>
-            </thead>
-            <% @services.each do |service|%>
-            <tbody>
-              <tr>
-                <td class=""><%= service.tittle %></td>
-                <td class=""><%= service.description %></td>
-                <td class=""><%= service.category %></td>
-                <td class=""><%= service.event_type %></td>
-                <td class=""><%= service.price %></td>
-                <td><%= link_to "Portfolio", "http://#{service.portfolio}", :target => "_blank", rel: "alternate" %></td>
-                <td>
-                  <%= link_to ('<i class="fa-solid fa-trash" style="color:gray"></i>').html_safe,  seller_service_path(service), method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, seller_service_path(service) %>
-                  <%= link_to ('<i class="fa-solid fa-pen-to-square" style="color:gray"></i>').html_safe, edit_seller_service_path(service) %>
-                </td>
-              </tr>
-            </tbody>
+        <div class="container">
+          <div class="card-deck">
+            <% @services.each do |service| %>
+              <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                  <%= image_tag service.image, class: "card-img-top" %>
+                  <div class="card-body">
+                    <h5 class="card-title"><b><%= service.tittle %></b></h5>
+                    <p class="card-text"><%= service.description %></p>
+                    <p><b>Category:&nbsp;&nbsp;</b><%= service.category %></p>
+                    <p><b>Event Type:&nbsp;&nbsp;</b><%= service.event_type %></p>
+                    <p><b>Price:&nbsp;&nbsp;</b><%= service.price %></p>
+                    <p><b>Portfolio:&nbsp;&nbsp;</b><%= link_to "Portfolio", "http://#{service.portfolio}", :target => "_blank", rel: "alternate" %></p>
+                     <%= link_to ('<i class="fa-solid fa-trash" style="color:gray"></i>').html_safe,  seller_service_path(service), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, seller_service_path(service) %>
+                    <%= link_to ('<i class="fa-solid fa-pen-to-square" style="color:gray"></i>').html_safe, edit_seller_service_path(service) %>   
+                  </div>
+                </div>
+              </div>
             <% end %>
-          </table>
+          </div>
         </div>
       <% else %>
         <h5><%= "No Data" %></h5>

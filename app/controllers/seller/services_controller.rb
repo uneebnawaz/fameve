@@ -1,16 +1,13 @@
 class Seller::ServicesController < ApplicationController
 	def index
-		@user = User.find(current_user.id)
 		@services = current_user.services
 	end
 
 	def new
-		@user = User.find(current_user.id)
 		@service = Service.new
 	end
 
 	def create
-		@user = User.find(current_user.id)
 		@service = Service.new(service_params)
 		@service.user_id = current_user.id
 		if @service.valid?
@@ -22,32 +19,28 @@ class Seller::ServicesController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(current_user.id)
 		@service = Service.find(params[:id])
 	end
 
 	def update
-		@user = User.find(current_user.id)
  		@service = Service.find(params[:id])
-    @service.update(service_params)
-    redirect_to seller_service_path(@service)
+    	@service.update(service_params)
+    	redirect_to seller_service_path(@service)
 	end
 
 	def destroy
-		@user = User.find(current_user.id)
 		@service = Service.find(params[:id])
     	@service.delete
 		redirect_to seller_services_path
 	end
 
 	def show
-		@user = User.find(current_user.id)
-		@booking = Booking.new
+		@reviews = Review.where(service_id: params[:id], status: true)
 		@service = Service.find(params[:id])
 	end
 
 	def view_sales
-		@user = User.find(current_user.id)
+		
 	end
 
 	private

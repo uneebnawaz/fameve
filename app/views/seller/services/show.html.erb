@@ -1,136 +1,48 @@
 <%= stylesheet_link_tag 'dashboard' %>
 <!--Main Navigation-->
 <header>
-  <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <%= link_to "Main Dashboard", seller_dashboard_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Services", seller_services_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Bookings", seller_bookings_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Manage Requests", seller_post_requests_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "View Sales", seller_sales_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-      </div>
-    </div>
-  </nav>
-  <!-- Sidebar -->
-
-  <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-
-     <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
-
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
-        <!-- Notification dropdown -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">Some news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Avatar -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-          <%= image_tag @user.image, class: "rounded-circle", height: "22", loading: "lazy" %>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <%= link_to 'My Profile', seller_profile_path, class: "dropdown-item" %>
-            </li>
-            <li>
-                <%= link_to 'Manage Profile', edit_user_registration_path, class: "dropdown-item" %>
-            </li>
-            <li>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+  <%= render partial: 'layouts/seller_header'%>
 </header>
 <!--Main Navigation-->
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
   <div class="container pt-4">
-    <h2>Show Service</h2><br>
-     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-4">
-          <div class="d-flex justify-content-center">
-            <%= image_tag @service.image, style: "width:200px" %>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag @service.image, class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><b><%= @service.tittle %></b></h5>
+              <p class="card-text"><%= @service.description %></p>
+              <h5><b>Category:&nbsp;&nbsp;</b><%= @service.category %><h5>
+              <h5><b>Event Type:&nbsp;&nbsp;</b><%= @service.event_type %><h5>
+              <h5><b>Price:&nbsp;&nbsp;</b><%= @service.price %><h5>
+              <h5><b>Portfolio:&nbsp;&nbsp;</b><%= link_to "Portfolio", "http://#{@service.portfolio}", :target => "_blank", rel: "alternate" %><h5>   
+            </div>
           </div>
         </div>
-        <div class="col-4">
-          <h5><b>Tittle:&nbsp;&nbsp;</b><%= @service.tittle %><h5>
-          <h5><b>Description:&nbsp;&nbsp;</b><%= @service.description %><h5>
-          <h5><b>Category:&nbsp;&nbsp;</b><%= @service.category %><h5>
-          <h5><b>Event Type:&nbsp;&nbsp;</b><%= @service.event_type %><h5>
-          <h5><b>Price:&nbsp;&nbsp;</b><%= @service.price %><h5>
-          <h5><b>Portfolio:&nbsp;&nbsp;</b><%= link_to "Portfolio", "http://#{@service.portfolio}", :target => "_blank", rel: "alternate" %><h5>
-            <button onclick="myFunction()" class= "btn btn-primary">Booking</button>
-            <div id="myDIV" class="toshow" style="display:none">
-            <%= form_for @booking, url: seller_bookings_path do |f| %>
-          <br><%= f.date_field :event_date, placeholder: 'Event Date', class: "form-control", required: true %>
-              <%= f.text_field :city, placeholder: 'City', class: "form-control", required: true %>
-              <%= f.text_field :address, placeholder: 'Address', class: "form-control", required: true %>
-              <%= f.text_field :phone, placeholder: 'Phone', class: "form-control", required: true %>
-              <%= f.text_area :description, placeholder: 'Describe your event', class: "form-control", required: true %> <br>
-              <%= f.hidden_field :user_id, :value => current_user.id, required: true %>
-              <%= f.hidden_field :service_id, :value => @service.id, required: true %>
-              <%= f.submit "Submit", class: "btn btn-success" %>
-            <% end %>
-            </div>                    
+        <div class="col mr-5">
+          <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+            <div class="card-body p-4">
+              <div class="form-outline mb-4">
+                <label class="form-label" for="addANote">Reviews from users</label>
+              </div>
+              <% if @reviews.any? %>
+                <% @reviews.each do |review| %>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p><%= review.description %></p>
+                      <div class="d-flex flex-row align-items-center">
+                        <%= image_tag "img_avatar.png", width: "25", height: "25" %>
+                        <p class="small mb-0 ms-2"><%= review.user.fname %></p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -138,13 +50,3 @@
 </main>
 <!--Main layout-->
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>

@@ -1,32 +1,7 @@
 <%= stylesheet_link_tag 'dashboard' %>
 <!--Main Navigation-->
 <header>
-  <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-       <%= link_to "Main Dashboard", admin_dashboard_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Authorize", admin_authorize_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "User Quries", admin_contact_us_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-      </div>
-    </div>
-  </nav>
-  <!-- Sidebar -->
-
-  <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-
-      <%= link_to 'FamEve', admin_dashboard_path , class: "navbar-brand" %>
-      <h5> Admin@fameve.com </h5>
-
-      <%= link_to ('<i class="fa-solid fa-right-from-bracket" style="color:gray"></i>').html_safe, destroy_user_session_path, method: :delete  %>
-
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+  <%= render partial: 'layouts/admin_header'%>  
 </header>
 <!--Main Navigation-->
 

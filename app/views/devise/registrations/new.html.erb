@@ -22,8 +22,8 @@
                   <div class="form-card">
                     <h2 class="fs-title">Account Information</h2>
                     <%= f.email_field :email, placeholder: "Email" %>
-                    <%= f.password_field :password, placeholder: "Password" %>
-                    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+                    <%= f.password_field :password, placeholder: "Password", id: "password" %>
+                    <%= f.password_field :password_confirmation, placeholder: "Confirm Password", id: "password_confirmation" %>
                     <%= f.text_field :city, placeholder: "City" %>
                   </div>
                   <input type="button" name="next" class="next action-button" value="Next Step"/>
@@ -33,7 +33,7 @@
                       <h2 class="fs-title">Personal Information</h2>
                       <%= f.text_field :fname, placeholder: "First Name" %>
                       <%= f.text_field :lname, placeholder: "Last Name" %>
-                      <%= f.text_field :phone, placeholder: "phone" %>
+                      <%= f.text_field :phone, placeholder: "03XX-XXXXXXX", type: "tel" %>
                       <%= f.text_field :address, placeholder: "Address" %>
                       <%= f.file_field :image, placeholder: 'Upload picture', direct_upload: true %>
                     </div>
