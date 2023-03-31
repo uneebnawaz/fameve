@@ -1,22 +1,18 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
- <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="container pt-4">
-    <h2>Update Booking Status</h2>
-    <%= form_for @booking, url: {action: :update} do |f| %>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+  <%= render partial: 'layouts/seller_header'%>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <%= form_for @booking, url: {action: :update} do |f| %>
     <div class="col-3">
+      <h2><strong>Status</strong></h2>
       <%= f.select :status, collection: Booking.statuses.keys.to_a %>
     </div><br>
     <div class="col-3">
-      <%= f.submit "Update", class: "btn btn-primary" %>
+      <%= f.submit "Update", class: "btn btn-primary btn-sm" %>
     </div>
     <% end %> 
+    </div>
   </div>
-</main>
-<!--Main layout-->
+</div>

@@ -1,40 +1,25 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="container pt-4">
-    <h2>Booking</h2><br>
-     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-4">
-          <% @user=User.find(@booking.user_id) %>
-          <h5><b>User Name:&nbsp;&nbsp;</b><%= @user.fname %><h5>
-          <% @service=Service.find(@booking.service_id) %>
-          <h5><b>Service Name:&nbsp;&nbsp;</b><%= @service.tittle %><h5>
-          <h5><b>Event Date:&nbsp;&nbsp;</b><%= @booking.event_date %><h5>
-          <h5><b>City:&nbsp;&nbsp;</b><%= @booking.city %><h5>
-          <h5><b>Address:&nbsp;&nbsp;</b><%= @booking.address %><h5>
-          <h5><b>Phone:&nbsp;&nbsp;</b><%= @booking.phone %><h5>
-          <h5><b>Description:&nbsp;&nbsp;</b><%= @booking.description %><h5>                  
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <h2><strong>Booking</strong></h2>
+            <% @user=User.find(@booking.user_id) %>
+            <h5><b>User Name:&nbsp;&nbsp;</b><%= @user.fname %><h5>
+            <% @service=Service.find(@booking.service_id) %>
+            <h5><b>Service Name:&nbsp;&nbsp;</b><%= @service.tittle %><h5>
+            <h5><b>Event Date:&nbsp;&nbsp;</b><%= @booking.event_date %><h5>
+            <h5><b>City:&nbsp;&nbsp;</b><%= @booking.city %><h5>
+            <h5><b>Address:&nbsp;&nbsp;</b><%= @booking.address %><h5>
+            <h5><b>Phone:&nbsp;&nbsp;</b><%= @booking.phone %><h5>
+            <h5><b>Description:&nbsp;&nbsp;</b><%= @booking.description %><h5>                  
+          </div>
         </div>
       </div>
     </div>
   </div>
-</main>
-<!--Main layout-->
-
-<script>
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
+</div>

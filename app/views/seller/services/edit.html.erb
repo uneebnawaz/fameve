@@ -1,38 +1,37 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="container pt-4">
-    <h2>Edit Service</h2>
-    <%= form_for @service, url: {action: :update} do |f| %>
-    <div class="col-3">
-      <%= f.text_field :tittle, placeholder: 'tittle', class: "form-control", required: true %>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class="col-3">
+        <h2><strong>Modify Service</strong></h2>
+      </div>
+      <%= form_for @service, url: {action: :update} do |f| %>
+        <div class="col-3">
+          <%= f.text_field :tittle, placeholder: 'tittle', class: "form-control", required: true %>
+        </div>
+        <div class="col-3">
+          <%= f.text_area :description, placeholder: 'description', class: "form-control", required: true %>
+        </div>
+        <div class="col-3 mt-3">
+          <%= f.select :category, ['Hotels', 'Decoration', 'Photographer', 'Rental Cars', 'Music System', 'Dress Designer', 'Event Manager', 'Chef', 'Others' ], class: "form-control", required: true %>
+        </div>
+        <div class="col-3 mt-3">
+          <%= f.select :event_type, ['Wedding', 'Birthday', 'Family Gathering'], class: "form-control", required: true%>
+        </div>
+        <div class="col-3 mt-3">
+          <%= f.text_field :price, placeholder: 'price', class: "form-control", required: true %>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :portfolio, placeholder: 'portfolio', class: "form-control", required: true %>
+        </div>
+        <div class="col-3">
+          <%= f.file_field :image, class: "form-control-file" %><br>
+          <%= f.submit "Submit", class: "btn btn-success" %>
+        </div>
+      <% end %> 
     </div>
-    <div class="col-3">
-      <%= f.text_area :description, placeholder: 'description', class: "form-control", required: true %>
-    </div>
-    <div class="col-3 mt-3">
-      <%= f.select :category, ['Hotels', 'Decoration', 'Photographer', 'Rental Cars', 'Music System', 'Dress Designer', 'Event Manager', 'Chef', 'Others' ], class: "form-control", required: true %>
-    </div>
-    <div class="col-3 mt-3">
-      <%= f.select :event_type, ['Wedding', 'Birthday', 'Family Gathering'], class: "form-control", required: true%>
-    </div>
-    <div class="col-3 mt-3">
-      <%= f.text_field :price, placeholder: 'price', class: "form-control", required: true %>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :portfolio, placeholder: 'portfolio', class: "form-control", required: true %>
-    </div>
-    <div class="col-3">
-      <%= f.file_field :image, class: "form-control-file" %><br>
-      <%= f.submit "Submit", class: "btn btn-success" %>
-    </div>
-    <% end %> 
   </div>
-</main>
-<!--Main layout-->
+</div>
+

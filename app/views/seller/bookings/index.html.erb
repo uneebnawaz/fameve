@@ -1,15 +1,11 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-      <h2>My Bookings</h2>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
       <% if @bookings.any? %>
+      <h2><strong>All Bookings</strong></h2>
         <div>
           <table class="table">
             <thead class = "text-dark">
@@ -43,8 +39,8 @@
           </table>
         </div>
       <% else %>
-        <br><h5><%= "No Bookings" %></h5>
+        <h5><%= "No Bookings" %></h5>
       <% end %>
     </div>
-</main>
-<!--Main layout-->
+  </div>
+</div>

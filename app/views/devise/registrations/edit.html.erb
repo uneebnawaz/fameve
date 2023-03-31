@@ -1,65 +1,59 @@
-<%= stylesheet_link_tag 'dashboard' %>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class= "container align-middle">
+        <h2><strong>Manage Profile</strong></h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <%= f.text_field :fname, placeholder: "First Name", class: "form-control" %>
+            </div>
+            <div class="col-md-4 mb-3">
+              <%= f.text_field :lname, placeholder: "Last Name", class: "form-control" %>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="input-group">
+                <%= f.text_field :city, placeholder: "city", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-3 mb-3">
+              <%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>
+            </div>
+            <div class="col-md-9 mb-3">
+              <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
+            </div>
+          </div>
 
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-        <div class= "container align-middle">
-          <h2><strong>Manage Profile</strong></h2>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <%= f.text_field :fname, placeholder: "First Name", class: "form-control" %>
-              </div>
-              <div class="col-md-4 mb-3">
-                <%= f.text_field :lname, placeholder: "Last Name", class: "form-control" %>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div class="input-group">
-                  <%= f.text_field :city, placeholder: "city", class: "form-control" %>
-                </div>
-              </div>
+          <div class="form-row">
+            <div class="col-md-3 mb-3">
+              <%= f.text_field :skill, placeholder: "Skill", class: "form-control" %>
             </div>
+            <div class="col-md-3 mb-3">
+              <%= f.text_field :experience, placeholder: "Experience", class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-3">
+              <%= f.text_field :education, placeholder: "Education", class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-3">
+              <%= f.text_field :certification, placeholder: "Certification", class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-3">
+              <%= f.file_field :image, placeholder: 'Upload picture', direct_upload: true %>
+            </div>
+          </div>
             <div class="form-row">
               <div class="col-md-3 mb-3">
-                <%= f.text_field :phone, placeholder: "Phone", class: "form-control" %>
-              </div>
-              <div class="col-md-9 mb-3">
-                <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
+                <%= f.password_field :current_password, placeholder: "current-password*", autocomplete: "current-password", class: "form-control" %>
               </div>
             </div>
-
-            <div class="form-row">
-              <div class="col-md-3 mb-3">
-                <%= f.text_field :skill, placeholder: "Skill", class: "form-control" %>
-              </div>
-              <div class="col-md-3 mb-3">
-                <%= f.text_field :experience, placeholder: "Experience", class: "form-control" %>
-              </div>
-              <div class="col-md-3 mb-3">
-                <%= f.text_field :education, placeholder: "Education", class: "form-control" %>
-              </div>
-              <div class="col-md-3 mb-3">
-                <%= f.text_field :certification, placeholder: "Certification", class: "form-control" %>
-              </div>
-              <div class="col-md-3 mb-3">
-                <%= f.file_field :image, placeholder: 'Upload picture', direct_upload: true %>
-              </div>
-            </div>
-              <div class="form-row">
-                <div class="col-md-3 mb-3">
-                  <%= f.password_field :current_password, placeholder: "current-password*", autocomplete: "current-password", class: "form-control" %>
-                </div>
-              </div>
-            <%= f.submit "Update", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
-</main>
-<!--Main layout-->
-
+  </div>
+</div>

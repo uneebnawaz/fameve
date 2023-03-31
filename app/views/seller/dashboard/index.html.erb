@@ -1,14 +1,161 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+    <%= stylesheet_link_tag 'view_sales' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-        <h2>Seller Dashboard!</h2>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Completed</h5>
+                    <% if @bookings.any? %>
+                      <% count = @bookings.where(status: "mark_done").count %>
+                      <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+                    <% else %>
+                      <span class="h2 font-weight-bold mb-0">No. 0</span>
+                    <% end %>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+               <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Progress</h5>
+                    <% if @bookings.any? %>
+                      <% count = @bookings.where(status: "in_progress").count %>
+                      <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+                    <% else %>
+                      <span class="h2 font-weight-bold mb-0">No. 0</span>
+                    <% end %>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                      <i class="fas fa-spinner"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Pending</h5>
+                    <% if @bookings.any? %>
+                      <% count = @bookings.where(status: "pending").count %>
+                      <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+                    <% else %>
+                      <span class="h2 font-weight-bold mb-0">No. 0</span>
+                    <% end %>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="fa-solid fa-hourglass-start"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Rejected</h5>
+                    <% if @bookings.any? %>
+                      <% count = @bookings.where(status: "rejected").count %>
+                      <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+                    <% else %>
+                      <span class="h2 font-weight-bold mb-0">No. 0</span>
+                    <% end %>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i class="fa-solid fa-xmark"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Sales Earnings</h5>
+              <% if @services.any? %>
+                <% total_price = @services.sum(&:price) %>
+                <span class="h2 font-weight-bold mb-0">Rs. <%= total_price %></span>
+              <% else %>
+                <span class="h2 font-weight-bold mb-0">Rs. 0</span>
+              <% end %>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                <i class="fa-solid fa-money-bill-1-wave"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Services Offered</h5>
+              <% if @total_services.any? %>
+                <% count = @total_services.count %>
+                <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+              <% else %>
+                <span class="h2 font-weight-bold mb-0">No. 0</span>
+              <% end %>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-secondary text-white rounded-circle shadow">
+                <i class="fas fa-arrow-up-wide-short"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Buyer Requests</h5>
+              <% if @requests.any? %>
+                <% count = @requests.count %>
+                <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+              <% else %>
+                <span class="h2 font-weight-bold mb-0">No. 0</span>
+              <% end %>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                <i class="fa-solid fa-signs-post"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</main>
-<!--Main layout-->
+  </div>
+</div>

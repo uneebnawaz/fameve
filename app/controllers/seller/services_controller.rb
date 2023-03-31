@@ -40,7 +40,9 @@ class Seller::ServicesController < ApplicationController
 	end
 
 	def view_sales
-		
+		bookings = Booking.where(status: "mark_done")
+		bookings = bookings.joins(:service).where(services: { user_id: current_user.id })
+		@services = bookings.map(&:service)
 	end
 
 	private

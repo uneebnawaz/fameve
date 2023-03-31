@@ -1,15 +1,13 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-  <div class="container pt-4">
-    <h2>New Service</h2>
-    <%= form_for @service, url: {action: :create} do |f| %>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class="col-3">
+        <h2><strong>Add Service</strong></h2>
+      </div>
+      <%= form_for @service, url: {action: :create} do |f| %>
     <div class="col-3">
       <%= f.text_field :tittle, placeholder: 'tittle', class: "form-control", required: true %>
     </div>
@@ -33,6 +31,6 @@
       <%= f.submit "Submit", class: "btn btn-success" %>
     </div>
     <% end %> 
+    </div>
   </div>
-</main>
-<!--Main layout-->
+</div>

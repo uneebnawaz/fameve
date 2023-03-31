@@ -1,4 +1,3 @@
-<%= stylesheet_link_tag 'dashboard' %>
 <style type="text/css">
   .card-deck {
     display: flex;
@@ -12,15 +11,12 @@
     object-fit: cover; /* This property will ensure that the image fills the entire space of the container without distorting the aspect ratio */
   }
 </style>
-<!--Main Navigation-->
-<header>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
   <%= render partial: 'layouts/seller_header'%>
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
       <% if @services.any? %>
         <div class="container">
           <div class="card-deck">
@@ -48,5 +44,5 @@
         <h5><%= "No Data" %></h5>
       <% end %>
     </div>
-</main>
-<!--Main layout-->
+  </div>
+</div>

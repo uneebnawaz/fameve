@@ -1,52 +1,50 @@
-<!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <%= link_to "Main Dashboard", seller_dashboard_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Add a Service", new_seller_service_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Manage Services", seller_services_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Manage Bookings", seller_bookings_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "Manage Requests", seller_post_requests_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-        <%= link_to "View Sales", seller_sales_path, :class => 'list-group-item list-group-item-action py-2 ripple' %>
-      </div>
-    </div>
-  </nav>
-  <!-- Sidebar -->
+<nav id="sidebar">
+  <div class="p-4 pt-5">
+    <% @user = User.find(current_user.id) %>
+    <%= image_tag @user.image, class: "img logo rounded-circle mb-5", style: "background-image" %>
+    <ul class="list-unstyled components mb-5">
+      <li class="active">
+        <%= link_to 'Profile', seller_profile_path, data: { toggle: "collapse", target: "#homeSubmenu" }, aria: { expanded: "false" }, class: "dropdown-toggle" %>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <%= link_to 'My Profile', seller_profile_path %>
+          </li>
+          <li>
+            <%= link_to 'Manage Profile', edit_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to "Main Dashboard", seller_dashboard_path %>
+      </li>
+      <li>
+        <%= link_to "Add a Service", new_seller_service_path %>
+      </li>
+      <li>
+        <%= link_to "Manage Services", seller_services_path %>
+      </li>
+      <li>
+        <%= link_to "Manage Bookings", seller_bookings_path %>
+      </li>
+      <li>
+        <%= link_to "Manage Requests", seller_post_requests_path %>
+      </li>
+      <li>
+        <%= link_to "View Sales", seller_sales_path %>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <%= link_to 'FamEve', seller_dashboard_path , class: "navbar-brand" %>
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
-        <!-- Avatar -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-          <% @user = User.find(current_user.id) %>
-          <%= image_tag @user.image, class: "rounded-circle", height: "22", loading: "lazy" %>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <%= link_to 'My Profile', seller_profile_path, class: "dropdown-item" %>
-            </li>
-            <li>
-                <%= link_to 'Manage Profile', edit_user_registration_path, class: "dropdown-item" %>
-            </li>
-            <li>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <!-- Navbar -->
+<script type="text/javascript">
+  (function($) {
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+  })(jQuery);
+</script>
