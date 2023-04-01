@@ -22,6 +22,9 @@ module API
         get ":service_id" do
           Review.where(status: true, service_id: service_id)
         end
+        get "" do
+          Review.where(user_id: params[:user_id], booking_id: params[:booking_id])
+        end
       end
     end
   end
