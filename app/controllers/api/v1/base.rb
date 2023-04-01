@@ -8,6 +8,7 @@ module API
       mount API::V1::Wishlists
       mount API::V1::Packages
       mount API::V1::Reviews
+      mount API::V1::Advises
     end
   end
 end

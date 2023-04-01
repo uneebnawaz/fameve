@@ -1,14 +1,10 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
-  <%= render partial: 'layouts/admin_header'%>  
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-      <h2>Manage Reviews</h2>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+  <%= render partial: 'layouts/admin_header'%>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+        <h2><strong>Validate Reviews<strong></h2><br>
       <% if @reviews.any? %>
         <div id="auto_update">
           <table class="table">
@@ -45,7 +41,7 @@
       <% else %>
         <h2><%= "No Data" %></h2>
       <% end %>
+    </div>
   </div>
-</main>
-<!--Main layout-->
+</div>
 

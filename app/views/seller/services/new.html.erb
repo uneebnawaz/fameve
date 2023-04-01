@@ -7,12 +7,12 @@
       <div class="col-3">
         <h2><strong>Add Service</strong></h2>
       </div>
-      <%= form_for @service, url: {action: :create} do |f| %>
+      <%= form_for @service, url: {action: :create}, id: "service" do |f| %>
     <div class="col-3">
-      <%= f.text_field :tittle, placeholder: 'tittle', class: "form-control", required: true %>
+      <%= f.text_field :tittle, placeholder: 'Tittle', class: "form-control", required: true %>
     </div>
     <div class="col-3">
-      <%= f.text_area :description, placeholder: 'description', class: "form-control", required: true %>
+      <%= f.text_area :description, placeholder: 'Description', class: "form-control", required: true %>
     </div>
     <div class="col-3 mt-3">
       <%= f.select :category, ['Hotels', 'Decoration', 'Photographer', 'Rental Cars', 'Music System', 'Dress Designer', 'Event Manager', 'Chef', 'Others' ], class: "form-control", required: true %>
@@ -21,10 +21,13 @@
       <%= f.select :event_type, ['Wedding', 'Birthday', 'Family Gathering'], class: "form-control", required: true%>
     </div>
     <div class="col-3 mt-3">
-      <%= f.text_field :price, placeholder: 'price', class: "form-control", required: true %>
+      <%= f.text_field :city, placeholder: 'City', class: "form-control", required: true %>
+    </div>
+    <div class="col-3 mt-3">
+      <%= f.text_field :price, placeholder: 'Rs.', class: "form-control", required: true, id: "price" %>
     </div>
     <div class="col-3">
-      <%= f.text_field :portfolio, placeholder: 'portfolio', class: "form-control", required: true %>
+      <%= f.text_field :portfolio, placeholder: 'Portfolio Link', class: "form-control", required: true, pattern: "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?" %>
     </div>
     <div class="col-3">
       <%= f.file_field :image, class: "form-control-file", required: true %><br>
@@ -34,3 +37,39 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  // Get the input field
+var priceInput = document.getElementById('price');
+
+// Add an event listener to the input field to check the input value on every keyup event
+priceInput.addEventListener('keyup', function() {
+  // Get the input value
+  var price = priceInput.value;
+
+  // Check if the input value is not a number
+  if (isNaN(price)) {
+    // Show an error message
+    priceInput.setCustomValidity('Please enter a valid price.');
+
+  } else {
+    // Clear the error message
+    priceInput.setCustomValidity('');
+  }
+});
+
+// Prevent form submission if the input value is not a number
+var form = document.getElementById('service');
+form.addEventListener('submit', function(event) {
+  var price = priceInput.value;
+  if (isNaN(price)) {
+    event.preventDefault();
+    // Show an error message
+    priceInput.setCustomValidity('Please enter a valid price.');
+  } else {
+    priceInput.setCustomValidity('');
+  }
+});
+
+</script>

@@ -1,5 +1,5 @@
 class ServiceSerializer < ActiveModel::Serializer 
-	attributes :id, :tittle, :description, :price, :portfolio, :user_id, :category, :image_attachment
+	attributes :id, :tittle, :description, :price, :city, :portfolio, :user_id, :category, :image_attachment
 
 	def image_attachment
 	    if object.image.attached?

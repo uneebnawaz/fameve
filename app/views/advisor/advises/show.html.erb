@@ -1,0 +1,20 @@
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+  <%= render partial: 'layouts/advisor_header'%>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <h2><strong>Advice Request</strong></h2>
+            <h5><b>Subject:&nbsp;&nbsp;</b><%= @advise.subject %><h5>
+            <h5><b>Description:&nbsp;&nbsp;</b><%= @advise.description %><h5>
+            <% @user=User.find(@advise.user_id) %>
+            <h5><b>User:&nbsp;&nbsp;</b><%= @user.fname %><h5>                  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

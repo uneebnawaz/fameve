@@ -32,6 +32,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def check_email_availability
+    email = params[:email]
+    user = User.find_by(email: email)
+    
+    if user
+      render json: { available: false }
+    else
+      render json: { available: true }
+    end
+  end
+
   # GET /resource/edit
   # def edit
   #   super

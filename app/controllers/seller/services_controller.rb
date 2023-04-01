@@ -48,6 +48,6 @@ class Seller::ServicesController < ApplicationController
 	private
 
 	def service_params
-		params.require(:service).permit(:tittle, :description, :price, :portfolio, :image, :event_type, :user_id, :category)
+		params.require(:service).permit(:tittle, :description, :price, :portfolio, :image, :event_type, :user_id, :category, :city)
 	end
 end

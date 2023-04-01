@@ -1,14 +1,70 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
-  <%= render partial: 'layouts/admin_header'%>  
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-        <h2>Admin Dashboard!</h2>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+  <%= stylesheet_link_tag 'view_sales' %>
+  <%= render partial: 'layouts/admin_header'%>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">User Queries</h5>
+              <% if @contacts.any? %>
+                <% count = @contacts.count %>
+                <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+              <% else %>
+                <span class="h2 font-weight-bold mb-0">No. 0</span>
+              <% end %>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                <i class="fa-solid fa-clipboard-question"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Reviews Received</h5>
+              <% if @reviews.any? %>
+                <% count = @reviews.count %>
+                <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+              <% else %>
+                <span class="h2 font-weight-bold mb-0">No. 0</span>
+              <% end %>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Registered Users</h5>
+              <% if @users.any? %>
+                <% count = @users.count %>
+                <span class="h2 font-weight-bold mb-0">No. <%= count %></span>
+              <% else %>
+                <span class="h2 font-weight-bold mb-0">No. 0</span>
+              <% end %>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-secondary text-white rounded-circle shadow">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</main>
-<!--Main layout-->
+  </div>
+</div>

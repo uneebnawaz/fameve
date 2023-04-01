@@ -1,33 +1,28 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
-  <%= render partial: 'layouts/admin_header'%>  
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-    	<h2>Query Response</h2><br>
-  		<div class="container">
-        <div class="row align-items-center">
-      		<div class="col-4">
-      			<h5><b>Name:&nbsp;&nbsp;</b><%= @contact.name %><h5>
-  				  <h5><b>Email:&nbsp;&nbsp;</b><%= @contact.email %><h5>
-  				  <h5><b>Phone:&nbsp;&nbsp;</b><%= @contact.phone %><h5>
-         		<h5><b>Subject:&nbsp;&nbsp;</b><%= @contact.subject %><h5>
-          	<h5><b>Description:&nbsp;&nbsp;</b><%= @contact.description %><h5><br>
-          </div>
-          <div class="col-4">
-            <%= form_for @contact, url: admin_reply_path do |f| %>
-              <%= f.text_field :email, placeholder: 'Your email..' %>
-              <%= f.text_area :reply, placeholder: 'Reply to user..', style: "height:150px" %>
-              <%= f.submit "Submit", class: "btn btn-success" %>
-            <% end %>
-          </div>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+  <%= render partial: 'layouts/admin_header'%>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <h2><strong>Query Response<strong></h2><br>
+      <div class="row align-items-center">
+        <div class="col-4">
+          <h5><b>Name:&nbsp;&nbsp;</b><%= @contact.name %><h5>
+          <h5><b>Email:&nbsp;&nbsp;</b><%= @contact.email %><h5>
+          <h5><b>Phone:&nbsp;&nbsp;</b><%= @contact.phone %><h5>
+          <h5><b>Subject:&nbsp;&nbsp;</b><%= @contact.subject %><h5>
+          <h5><b>Description:&nbsp;&nbsp;</b><%= @contact.description %><h5><br>
         </div>
-    </div>
-</main>
-<!--Main layout-->
+        <div class="col-4">
+          <%= form_for @contact, url: admin_reply_path do |f| %>
+            <%= f.text_field :email, placeholder: 'Your email..' %>
+            <%= f.text_area :reply, placeholder: 'Reply to user..', style: "height:150px" %>
+            <%= f.submit "Submit", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+
 
 

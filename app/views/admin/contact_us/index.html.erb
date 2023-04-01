@@ -1,14 +1,10 @@
-<%= stylesheet_link_tag 'dashboard' %>
-<!--Main Navigation-->
-<header>
-  <%= render partial: 'layouts/admin_header'%>  
-</header>
-<!--Main Navigation-->
-
-<!--Main layout-->
-<main style="margin-top: 58px;">
-    <div class="container pt-4">
-        <h2>Manage Queries</h2><br>
+<div class="wrapper d-flex align-items-stretch">
+  <%= stylesheet_link_tag 'seller_style' %>
+  <%= render partial: 'layouts/admin_header'%>
+    <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+    <div class="container-fluid">
+      <h2><strong>Manage Queries<strong></h2><br>
         <% if @contacts.any? %>
         <div>
           <table class="table">
@@ -43,5 +39,5 @@
         <br><h5><%= "No Data" %></h5>
       <% end %>
     </div>
-</main>
-<!--Main layout-->
+  </div>
+</div>

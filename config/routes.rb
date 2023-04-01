@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "/team", to: "home#team"
   get "/about", to: "home#about"
   get "/guide", to: "home#guide"
+  devise_scope :user do
+    post '/check_email_availability', to: 'users/registrations#check_email_availability'
+  end
   resources :contact_us
   namespace :admin do
     get "/dashboard", to: "dashboard#index"
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   end
   namespace :advisor do
     get "/dashboard", to: "dashboard#index"
+    resources :advises
   end
   namespace :seller do
     get "/dashboard", to: "dashboard#index"

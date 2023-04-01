@@ -9,6 +9,7 @@ $(".next").click(function(){
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var passwordRegex = /^\d{6,}$|^[a-zA-Z]{6,}$/;
     var phoneRegex = /^(\+92|0)?(3\d{2}|4[1-9]\d|5\d{2}|6\d{2}|7\d{2}|8\d{2}|9\d{2})\d{7}$/;
+    var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
 
     // Check if all fields in current fieldset are filled and pass validation
@@ -20,6 +21,22 @@ $(".next").click(function(){
         if (input.attr('type') === 'email' && !emailRegex.test(value)) {
             isValid = false;
             alert('Please enter a valid email address.');
+        }else if (input.attr('type') === 'email') {
+            // Check if email is already taken
+            $.ajax({
+                url: '/check_email_availability', 
+                method: 'POST',
+                data: { email: value },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('X-CSRF-Token', csrf_token); 
+                },
+                success: function(response) {
+                    if (response.available === false) {
+                      isValid = false;
+                      alert('Email is already taken.');
+                    }
+                }
+            });
         }
         
         // Validate password field

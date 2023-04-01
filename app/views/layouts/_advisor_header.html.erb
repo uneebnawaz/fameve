@@ -1,0 +1,16 @@
+<nav id="sidebar">
+  <div class="p-4 pt-5">
+    <%= image_tag "img_avatar.png", class: "img logo rounded-circle mb-5", style: "background-image" %>
+    <ul class="list-unstyled components mb-5">
+      <li>
+        <%= link_to "Main Dashboard", advisor_dashboard_path %>
+      </li>
+      <li>
+        <%= link_to "Advice", advisor_advises_path %>
+      </li>
+      <li>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+  </div>
+</nav>

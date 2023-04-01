@@ -13,6 +13,7 @@
               <p class="card-text"><%= @service.description %></p>
               <h5><b>Category:&nbsp;&nbsp;</b><%= @service.category %><h5>
               <h5><b>Event Type:&nbsp;&nbsp;</b><%= @service.event_type %><h5>
+              <h5><b>Based In:&nbsp;&nbsp;</b><%= @service.city %><h5>
               <h5><b>Price:&nbsp;&nbsp;</b><%= @service.price %><h5>
               <h5><b>Portfolio:&nbsp;&nbsp;</b><%= link_to "Portfolio", "http://#{@service.portfolio}", :target => "_blank", rel: "alternate" %><h5>   
             </div>
