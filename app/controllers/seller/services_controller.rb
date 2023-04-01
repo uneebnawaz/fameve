@@ -35,7 +35,7 @@ class Seller::ServicesController < ApplicationController
 	end
 
 	def show
-		@reviews = Review.where(service_id: params[:id], status: true)
+		@reviews = Review.where(service_id: params[:id])
 		@service = Service.find(params[:id])
 	end
 
