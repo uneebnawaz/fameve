@@ -18,8 +18,8 @@
           </div>
           <div class="col-4">
             <%= form_for @request, url: seller_request_reply_path do |f| %>
-              <%= f.text_field :email, placeholder: 'Your email..' %>
-              <%= f.text_area :reply, placeholder: 'Reply to user..', style: "height:150px" %>
+              <%= f.text_field :email, placeholder: 'Your email..', pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", required: true %>
+              <%= f.text_area :reply, placeholder: 'Reply to user..', style: "height:150px", required: true %>
               <%= f.submit "Submit", class: "btn btn-success" %>
             <% end %>
           </div>

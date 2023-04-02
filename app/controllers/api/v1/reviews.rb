@@ -20,7 +20,7 @@ module API
           end
         end
         get ":service_id" do
-          Review.where(status: true, service_id: service_id)
+          Review.where(status: true, service_id: params[:service_id])
         end
         get "" do
           Review.where(user_id: params[:user_id], booking_id: params[:booking_id])
