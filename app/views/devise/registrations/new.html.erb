@@ -26,7 +26,7 @@
                     <%= f.password_field :password_confirmation, placeholder: "Confirm Password", id: "password_confirmation" %>
                     <%= f.text_field :city, placeholder: "City" %>
                   </div>
-                  <input type="button" name="next" class="next action-button" value="Next Step"/>
+                  <input type="button" name="next" class="next action-button" value="Next"/>
                 </fieldset>
                   <fieldset>
                     <div class="form-card">
@@ -35,10 +35,9 @@
                       <%= f.text_field :lname, placeholder: "Last Name" %>
                       <%= f.text_field :phone, placeholder: "03XX-XXXXXXX", type: "tel" %>
                       <%= f.text_field :address, placeholder: "Address" %>
-                      <%= f.file_field :image, placeholder: 'Upload picture', direct_upload: true %>
                     </div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next Step"/>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Back"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
                   </fieldset>
                     <fieldset>
                       <div class="form-card">
@@ -49,7 +48,7 @@
                         <%= f.text_field :education, placeholder: "Education" %>
                         <%= f.text_field :certification, placeholder: "Certification" %>
                       </div>
-                      <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                      <input type="button" name="previous" class="previous action-button-previous" value="Back"/>
                       <%= f.submit "Confirm", class: "next action-button"%>
                     </fieldset>
                   <fieldset>
@@ -76,4 +75,3 @@
     </div>
   </div>
 </div>
-<%= render partial: 'layouts/footer'%>

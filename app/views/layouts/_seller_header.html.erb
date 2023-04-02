@@ -1,7 +1,11 @@
 <nav id="sidebar">
   <div class="p-4 pt-5">
     <% @user = User.find(current_user.id) %>
-    <%= image_tag @user.image, class: "img logo rounded-circle mb-5", style: "background-image" %>
+    <% if @user.image.present? %>
+      <%= image_tag @user.image, class: "img logo rounded-circle mb-5", style: "background-image" %>
+    <% else %>
+      <%= image_tag "img_avatar.png", class: "img logo rounded-circle mb-5", style: "background-image" %>
+    <% end %>
     <ul class="list-unstyled components mb-5">
       <li class="active">
         <%= link_to 'Profile', seller_profile_path, data: { toggle: "collapse", target: "#homeSubmenu" }, aria: { expanded: "false" }, class: "dropdown-toggle" %>

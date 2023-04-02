@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :post_requests, dependent: :destroy
   has_many :wishlists, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :advises, dependent: :destroy
   has_one_attached :image, :dependent => :destroy
   enum role: {seller: 0, buyer: 1, admin: 2, advisor: 3}, _default: 0
   devise :database_authenticatable, :registerable,
