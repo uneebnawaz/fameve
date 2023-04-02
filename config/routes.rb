@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
   namespace :advisor do
     get "/dashboard", to: "dashboard#index"
-    resources :advises
+    resources :advise_requests
   end
   namespace :seller do
     get "/dashboard", to: "dashboard#index"

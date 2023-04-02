@@ -1,3 +1,2 @@
-class Advise < ApplicationRecord
-    belongs_to :user
+class AdviseRequest < ApplicationRecord
 end

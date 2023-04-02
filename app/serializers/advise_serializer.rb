@@ -1,3 +1,3 @@
 class AdviseSerializer < ActiveModel::Serializer 
-	attributes :id, :subject, :user_id, :description, :advise
+	attributes :id, :name, :email, :phone, :description
 end

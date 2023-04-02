@@ -5,19 +5,16 @@ module API
 
       resource :advises do
         get ":id" do
-          advise = Advise.find_by(id: params[:id])
-          if advise.present? && advise.advise.present?
-            advise
-          else
-            error!('The advisor hasnt responded yet', 400)
-          end
+          advise = AdviseRequest.find_by(id: params[:id])
+          advise
         end
 
         post do
-          subject = params[:subject]
+          name = params[:name]
+          email = params[:email]
+          phone = params[:phone]
           description = params[:description]
-          user_id = params[:user_id]
-          advise = Advise.new(subject: subject, description: description, user_id: user_id)
+          advise = AdviseRequest.new(name: name, email: email, phone: phone, description: description)
           advise.save
         end
       end

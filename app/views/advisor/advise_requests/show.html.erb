@@ -8,10 +8,10 @@
         <div class="row align-items-center">
           <div class="col-4">
             <h2><strong>Advice Request</strong></h2>
-            <h5><b>Subject:&nbsp;&nbsp;</b><%= @advise.subject %><h5>
+            <h5><b>Name:&nbsp;&nbsp;</b><%= @advise.name %><h5>
+            <h5><b>Email:&nbsp;&nbsp;</b><%= @advise.email %><h5>
+            <h5><b>Phone:&nbsp;&nbsp;</b><%= @advise.phone %><h5>
             <h5><b>Description:&nbsp;&nbsp;</b><%= @advise.description %><h5>
-            <% @user=User.find(@advise.user_id) %>
-            <h5><b>User:&nbsp;&nbsp;</b><%= @user.fname %><h5>                  
           </div>
         </div>
       </div>

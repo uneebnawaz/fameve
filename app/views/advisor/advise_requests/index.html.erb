@@ -10,22 +10,23 @@
           <table class="table">
             <thead class = "text-dark">
               <tr>
-                <th><%= "Subject" %></th>
+                <th><%= "Name" %></th>
+                <th><%= "Email" %></th>
+                <th><%= "Phone" %></th>
                 <th><%= "Description" %></th>
-                <th><%= "Advise" %></th>
                 <th><%= "Operation" %></th>
               </tr>
             </thead>
             <% @advises.each do |advise|%>
             <tbody>
               <tr>
-                <td class=""><%= advise.subject %></td>
+                <td class=""><%= advise.name %></td>
+                <td class=""><%= advise.email %></td>
+                <td class=""><%= advise.phone %></td>
                 <td class=""><%= advise.description %></td>
-                <td class=""><%= advise.advise %></td>
                 <td>
-                  <%= link_to ('<i class="fa-solid fa-trash" style="color:gray"></i>').html_safe, advisor_advise_path(advise), method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, advisor_advise_path(advise) %>
-                  <%= link_to ('<i class="fa-solid fa-pen-to-square" style="color:gray"></i>').html_safe, edit_advisor_advise_path(advise) %>
+                  <%= link_to ('<i class="fa-solid fa-trash" style="color:gray"></i>').html_safe, advisor_advise_request_path(advise), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to ('<i class="fa-sharp fa-solid fa-eye" style="color:gray"></i>').html_safe, advisor_advise_request_path(advise) %>
                 </td>
               </tr>
             </tbody>
