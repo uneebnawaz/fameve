@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'f190237@nu.edu.pk'
+  default from: 'contact.uneebnawaz@gmail.com'
 
   def query_reply
     @contact = params[:contact]
