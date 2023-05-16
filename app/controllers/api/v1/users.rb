@@ -18,6 +18,29 @@ module API
             error!('Invalid email or password', 401)
           end
         end
+
+        post 'forgot_password' do
+          @user = User.find_by(email: params[:email])
+          if @user.present?
+            UserMailer.with(user: @user).buyer_forgot_password.deliver_now
+            { message: 'Instructions sent to your email.' }
+          else
+            error!('User not found.', 404)
+          end
+        end
+
+        post 'change_password' do
+          @user = User.find_by(email: params[:email])
+          if @user.present?
+            password = params[:password]
+            password_confirmation = params[:password_confirmation]
+            @user.update(password: password, password_confirmation: password_confirmation)
+            { message: 'Password is Changed' }
+          else
+            error!('User not found.', 404)
+          end
+        end
+
         post 'sign_up' do
           email = params[:email]
           password = params[:password]

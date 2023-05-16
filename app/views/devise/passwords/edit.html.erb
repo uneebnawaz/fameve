@@ -15,12 +15,12 @@
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em><br />
               <% end %>
-              <%= f.password_field :password, class: "form-control", placeholder: "Enter Your Email", 
+              <%= f.password_field :password, class: "form-control", placeholder: "New Password", 
                 required: true %>
             </div>
             <div class="mb-3">
               <label for="pswrd_cnfrm" class="form-label">Confirm new password</label>
-              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Enter Your Email", 
+              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", 
                 required: true %>
             </div>
             <%= f.submit "Change my password", class: "btn btn-primary" %>

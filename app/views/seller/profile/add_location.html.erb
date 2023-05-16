@@ -22,7 +22,8 @@
           <%= hidden_field_tag 'longitude', nil, id: 'longitude' %>
           <%= text_field_tag 'pac-input', nil, class: 'form-control', placeholder: 'Search your location', style: 'margin-bottom: 5px' %>
           <div id="map" style="margin-bottom: 10px"></div>
-          <button type="button" class= "btn btn-success" onclick="muSubFun();">Submit</button>
+          <button type="button" class= "btn btn-dark" onclick="muSubFun();">Submit</button>
+          <button type="button" class="btn btn-primary" onclick="findMyLocation();">Find My Location</button>
         </div>
     </div>
   </div>
@@ -66,6 +67,86 @@
       infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
       infowindow.open(map, marker);
     });
+
+    marker.addListener('dragend', function() {
+      var markerPosition = marker.getPosition();
+      var geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({ 'latLng': markerPosition }, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            document.getElementById('pac-input').value = results[0].formatted_address;
+            document.getElementById('latitude').value = markerPosition.lat();
+            document.getElementById('longitude').value = markerPosition.lng();
+          } else {
+            console.error('No results found');
+          }
+        } else {
+          console.error('Geocoder failed due to: ' + status);
+        }
+      });
+    });
+  }
+
+  function findMyLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: latitude, lng: longitude },
+        zoom: 17
+      });
+      var marker = new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: map,
+        draggable: true
+      });
+
+      var geocoder = new google.maps.Geocoder();
+      var latlng = new google.maps.LatLng(latitude, longitude);
+      geocoder.geocode({ 'latLng': latlng }, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            document.getElementById('pac-input').value = results[0].formatted_address;
+          } else {
+            console.error('No results found');
+          }
+        } else {
+          console.error('Geocoder failed due to: ' + status);
+        }
+      });
+
+      // Update the input box and hidden fields when the marker position changes
+      marker.addListener('dragend', function() {
+        var markerPosition = marker.getPosition();
+        var geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({ 'latLng': markerPosition }, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+              document.getElementById('pac-input').value = results[0].formatted_address;
+              document.getElementById('latitude').value = markerPosition.lat();
+              document.getElementById('longitude').value = markerPosition.lng();
+            } else {
+              console.error('No results found');
+            }
+          } else {
+            console.error('Geocoder failed due to: ' + status);
+          }
+        });
+      });
+    }, function(error) {
+      console.error(error);
+      alert('Error: ' + error.message);
+    });
+  } else {
+    alert('Geolocation is not supported by this browser.');
+  }
   }
 
   function muSubFun() {
