@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
   }
   root "home#index"
   get "/home", to: "home#index"
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
     get "/profile/:id/edit", to: "profile#edit" 
     patch "/request_reply", to: "post_requests#request_reply"
     get "/sales", to: "services#view_sales"
+    get "/add_location", to: "profile#add_location"
+    patch "/update_location", to: "profile#update_location"
     resources :services 
     resources :bookings
     resources :post_requests

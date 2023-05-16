@@ -1,6 +1,13 @@
 class Seller::BookingsController < ApplicationController
 	def index
-		@bookings = Booking.joins(:service).where(services: { user_id: current_user.id })
+		bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :desc)
+		case params[:filter_by]
+		when "date"
+		  bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :asc)
+		when "none"
+		  # do nothing
+		end
+		@bookings = bookings_scope
 	end
 
 	def new

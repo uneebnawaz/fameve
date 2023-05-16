@@ -40,6 +40,9 @@ module API
             error!('Invalid user', 401)
           end
         end
+        get do
+          User.where(role: "seller")
+        end
         patch 'edit_profile' do
           city = params[:city]
           fname = params[:fname]

@@ -1,6 +1,13 @@
 class Seller::PostRequestsController < ApplicationController
 	def index
-		@requests = PostRequest.all
+		bookings_scope = PostRequest.all.order(event_date: :desc)
+		case params[:filter_by]
+		when "date"
+		  bookings_scope = PostRequest.all.order(event_date: :asc)
+		when "none"
+		  # do nothing
+		end
+		@requests = bookings_scope
 	end
 
 

@@ -6,7 +6,23 @@
     <div class="container-fluid">
       <h2><strong>Buyer Requests</strong></h2>
       <% if @requests.any? %>
-        <div>
+        <%= form_tag(seller_post_requests_path, method: :get, id: "filter-form") do %>
+          <div class="dropdown">
+            <select class="form-select" name="filter_by" aria-label="Filter By">
+              <option selected disabled>Filter By</option>
+              <option value="none">None</option>
+              <option value="date">Date</option>
+            </select>
+          </div>
+        <% end %>
+          <script>
+            $(document).ready(function() {
+              $('#filter-form select').change(function() {
+                $('#filter-form').submit();
+              });
+            });
+          </script>
+        <br><div>
           <table class="table">
             <thead class = "text-dark">
               <tr>
