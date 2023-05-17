@@ -4,6 +4,18 @@ class Seller::BookingsController < ApplicationController
 		case params[:filter_by]
 		when "date"
 		  bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :asc)
+		when "mark_done"
+		  bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :asc)
+		  bookings_scope = bookings_scope.where(status: "mark_done")
+		when "rejected"
+		  bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :asc)
+		  bookings_scope = bookings_scope.where(status: "rejected")
+		when "pending"
+		  bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :asc)
+		  bookings_scope = bookings_scope.where(status: "pending")
+		when "in_progress"
+		  bookings_scope = Booking.joins(:service).where(services: { user_id: current_user.id }).order(event_date: :asc)
+		  bookings_scope = bookings_scope.where(status: "in_progress")
 		when "none"
 		  # do nothing
 		end

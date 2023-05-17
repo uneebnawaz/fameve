@@ -4,7 +4,6 @@
     <!-- Page Content  -->
   <div id="content" class="p-4 p-md-5">
     <div class="container-fluid">
-      <% if @bookings.any? %>
       <h2><strong>All Bookings</strong></h2>
       <%= form_tag(seller_bookings_path, method: :get, id: "filter-form") do %>
         <div class="dropdown">
@@ -12,6 +11,10 @@
             <option selected disabled>Filter By</option>
             <option value="none">None</option>
             <option value="date">Date</option>
+            <option value="mark_done">Mark Done</option>
+            <option value="rejected">Rejected</option>
+            <option value="pending">Pending</option>
+            <option value="in_progress">In Progress</option>
           </select>
         </div>
       <% end %>
@@ -22,6 +25,7 @@
           });
         });
       </script>
+      <% if @bookings.any? %>
     <br><div>
           <table class="table">
             <thead class = "text-dark">
@@ -55,7 +59,7 @@
           </table>
         </div>
       <% else %>
-        <h5><%= "No Bookings" %></h5>
+        <br><h5><%= "No Bookings" %></h5>
       <% end %>
     </div>
   </div>
